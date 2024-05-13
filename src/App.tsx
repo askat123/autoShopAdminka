@@ -1,24 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import Admin from "./Pages/adminOanel";
+import { useState } from "react";
 
+interface IUSers {
+  name: string;
+  job: string;
+  image: string;
+}
 function App() {
+  // const [users, setUsers] = useState<IUSers[]>([]);
+
+  // function addUser(newUser: any) {
+  //   let data: IUSers[] = JSON.parse(localStorage.getItem("user") || "[]");
+  //   data.push(newUser);
+  //   localStorage.setItem("user", JSON.stringify(data));
+  // }
+  // function getUser() {
+  //   let data: IUSers[] = JSON.parse(localStorage.getItem("user") || "[]");
+  //   setUsers(data);
+  // }
+
+  // function removeUser(idx: number) {
+  //   let data: IUSers[] = JSON.parse(localStorage.getItem("user") || "[]");
+  //   let filteredUsers = data.filter((el: any, index: number) => index !== idx);
+  //   localStorage.setItem("user", JSON.stringify(filteredUsers));
+  //   getUser();
+  // }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <>
+        <Header />
+        <Routes>
+          <Route path="/AdminPanel" element={<Admin />} />
+          <Route path="/" element={<Hero />} />
+        </Routes>
+      </>
     </div>
   );
 }
