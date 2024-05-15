@@ -7,7 +7,7 @@ interface IProduct {
   productName: string;
   image: string;
   price: string;
-  type: string;
+  productType: string;
 }
 
 function Admin() {
@@ -17,7 +17,7 @@ function Admin() {
     productName: "",
     image: "",
     price: "",
-    type: "",
+    productType: "",
   });
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,7 +67,7 @@ function Admin() {
         productName: "",
         image: "",
         price: "",
-        type: "",
+        productType: "",
       });
       nav("/");
     } catch (error) {
@@ -106,9 +106,9 @@ function Admin() {
           value={value.price}
         />
         <select
-          onChange={(e) => handleInput(e, "type")}
+          onChange={(e) => handleInput(e, "productType")}
           style={{ width: "30%", border: "2px solid gray" }}
-          value={value.type}
+          value={value.productType}
         >
           <option value="">Select type</option>
           <option value="Каталог шин">Каталог шин</option>
