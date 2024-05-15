@@ -1,4 +1,3 @@
-import { Button, Input } from "antd";
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -50,7 +49,7 @@ function Admin() {
   };
 
   const handleInput = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
     fieldName: keyof IProduct
   ) => {
     setValue({ ...value, [fieldName]: e.target.value });
@@ -60,7 +59,7 @@ function Admin() {
     dispatch({ type: "ADD_PRODUCT", payload: value });
     try {
       await axios.post(
-        "https://663f1cbbe3a7c3218a4c1c30.mockapi.io/products/sale",
+        "https://664459266c6a6565870a0015.mockapi.io/all",
         value
       );
       console.log("Product added successfully");
@@ -88,31 +87,38 @@ function Admin() {
           gap: "20px",
         }}
       >
-        <Input
+        <input
           onChange={(e) => handleInput(e, "productName")}
           style={{ width: "30%", border: "2px solid gray" }}
           placeholder="Product Name"
           value={value.productName}
         />
-        <Input
+        <input
           type="file"
           accept="image/*"
           onChange={handleImageUpload}
           style={{ width: "30%", border: "2px solid gray" }}
         />
-        <Input
+        <input
           onChange={(e) => handleInput(e, "price")}
           style={{ width: "30%", border: "2px solid gray" }}
           placeholder="Price"
           value={value.price}
         />
-        <Input
+        <select
           onChange={(e) => handleInput(e, "type")}
           style={{ width: "30%", border: "2px solid gray" }}
-          placeholder="Type"
           value={value.type}
-        />
-        <Button onClick={handleAddProduct}>Add new product</Button>
+        >
+          <option value="">Select type</option>
+          <option value="Каталог шин">Каталог шин</option>
+          <option value="Антифризы">Антифризы</option>
+          <option value="Моторные масла">Моторные масла</option>
+          <option value="АКБ">АКБ</option>
+          <option value="Предохранители">Предохранители</option>
+          <option value="Провода пусковые">Провода пусковые</option>
+        </select>
+        <button onClick={handleAddProduct}>Add new product</button>
       </div>
     </div>
   );

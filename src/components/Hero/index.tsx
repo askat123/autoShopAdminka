@@ -39,7 +39,7 @@ function Hero() {
     setLoader(true);
     try {
       const response: any = await axios.get(
-        `https://663f1cbbe3a7c3218a4c1c30.mockapi.io/products/sale`
+        `https://664459266c6a6565870a0015.mockapi.io/all`
       );
       const data = response.data;
       dispatch({ type: "SET_USER", payload: data });
@@ -53,7 +53,7 @@ function Hero() {
   async function deleteUser(userId: any) {
     try {
       await axios.delete(
-        `https://663f1cbbe3a7c3218a4c1c30.mockapi.io/products/sale/${userId}`
+        `https://664459266c6a6565870a0015.mockapi.io/all/${userId}`
       );
       dispatch({ type: "DELETE_USER", payload: userId });
 
@@ -66,7 +66,7 @@ function Hero() {
   async function editUser(upUser: any) {
     try {
       await axios.put(
-        `https://663f1cbbe3a7c3218a4c1c30.mockapi.io/products/sale/${upUser.id}`,
+        `https://664459266c6a6565870a0015.mockapi.io/all/${upUser.id}`,
         upUser
       );
       dispatch({ type: "CHANGE_USER", payload: upUser });
@@ -120,17 +120,17 @@ function Hero() {
               />
             }
           >
-            <h3>{el.name}</h3>
+            <h3>{el.productName}</h3>
             <Meta style={{ padding: "5px 0" }} />
             <Button type="primary" danger onClick={() => deleteUser(el.id)}>
               Delete
             </Button>
-            <Button
+            {/* <Button
               style={{ marginLeft: "20px" }}
               onClick={() => showModal(el)}
             >
               Edit
-            </Button>
+            </Button> */}
             <Modal
               title="Edit User"
               visible={isModalOpen}
