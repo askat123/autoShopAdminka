@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Button, Card, Input, Modal } from "antd";
+import { Button, Card, Flex, Input, Modal } from "antd";
 import Meta from "antd/es/card/Meta";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
@@ -14,7 +14,7 @@ function Hero() {
     productName: "",
     image: "",
     price: "",
-    type: "",
+    marka: "",
   });
 
   const dispatch = useDispatch();
@@ -101,15 +101,18 @@ function Hero() {
             style={{
               margin: "0 10px",
               width: 240,
-              height: 340,
+              height: 100,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "0px 10px",
             }}
             cover={
               <img
                 style={{
-                  height: "200px",
-                  width: "85%",
+                  height: "50px",
+                  width: "50px",
                   objectFit: "cover",
-                  padding: "10px 0 10px 20px",
                 }}
                 alt="example"
                 src={

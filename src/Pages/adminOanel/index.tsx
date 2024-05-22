@@ -7,7 +7,7 @@ interface IProduct {
   productName: string;
   image: string;
   price: string;
-  productType: string;
+  marka: string;
 }
 
 function Admin() {
@@ -17,7 +17,7 @@ function Admin() {
     productName: "",
     image: "",
     price: "",
-    productType: "",
+    marka: "",
   });
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,7 +67,7 @@ function Admin() {
         productName: "",
         image: "",
         price: "",
-        productType: "",
+        marka: "",
       });
       nav("/");
     } catch (error) {
@@ -106,17 +106,18 @@ function Admin() {
           value={value.price}
         />
         <select
-          onChange={(e) => handleInput(e, "productType")}
+          onChange={(e) => handleInput(e, "marka")}
           style={{ width: "30%", border: "2px solid gray" }}
-          value={value.productType}
+          value={value.marka}
         >
-          <option value="">Select type</option>
-          <option value="Каталог шин">Каталог шин</option>
-          <option value="Антифризы">Антифризы</option>
-          <option value="Моторные масла">Моторные масла</option>
-          <option value="АКБ">АКБ</option>
-          <option value="Предохранители">Предохранители</option>
-          <option value="Провода пусковые">Провода пусковые</option>
+          <option value="">Выберите марку</option>
+          <option value="Mazda">Mazda</option>
+          <option value="Hyundai">Hyundai</option>
+          <option value="Opel">Opel</option>
+          <option value="Audi">Audi</option>
+          <option value="Ford">Ford</option>
+          <option value="Toyota">Toyota</option>
+          <option value="Nissan">Nissan</option>
         </select>
         <button onClick={handleAddProduct}>Add new product</button>
       </div>
